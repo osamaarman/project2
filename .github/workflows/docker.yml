@@ -28,17 +28,10 @@ jobs:
         run: |
           docker build -t ghcr.io/${{ github.repository_owner }}/backend:latest ./backend
 
-      - name: Build Frontend Image
-        run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/frontend:latest ./frontend
-
       - name: Push Backend Image
         run: |
           docker push ghcr.io/${{ github.repository_owner }}/backend:latest
 
-      - name: Push Frontend Image
-        run: |
-          docker push ghcr.io/${{ github.repository_owner }}/frontend:latest
 
       - name: Deploy
         run: |
@@ -48,14 +41,7 @@ jobs:
           docker rm frontend || true
 
           docker pull ghcr.io/${{ github.repository_owner }}/backend:latest
-          docker pull ghcr.io/${{ github.repository_owner }}/frontend:latest
-
-          docker run -d \
-            --name backend \
-            -p 5000:5000 \
-            ghcr.io/${{ github.repository_owner }}/backend:latest
-
-          docker run -d \
-            --name frontend \
-            -p 80:80 \
-            ghcr.io/${{ github.repository_owner }}/frontend:latest
+          cd /Desktop/project2/Expense_Tracker 1/Expense_Tracker
+          docker compose down 
+          docker compose up -d
+       
