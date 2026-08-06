@@ -31,7 +31,7 @@ jobs:
       - name: Push Backend Image
         run: |
           docker pull ghcr.io/${{ github.repository_owner }}/backend:latest
-          cd /Desktop/project2/Expense_Tracker 1/Expense_Tracker
+          cd /Desktop/project2/Expense_Tracker
           docker compose down 
           docker compose up -d
        
