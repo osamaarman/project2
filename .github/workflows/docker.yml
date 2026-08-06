@@ -34,7 +34,7 @@ jobs:
 
       - name: Restart Containers
         run: |
-          cd /Desktop/project2/Expense_Tracker
+          cd /home/aau/Desktop/project2/Expense_Tracker
           docker compose down
           docker compose up -d
       
