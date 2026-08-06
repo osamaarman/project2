@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session
 from app.main import (
     check_if_exist,
@@ -13,10 +14,15 @@ from app.main import (
     search_expenses,
     delete_category,
     get_budget_summary
-    
+)    
+app = Flask(
+    __name__,
+    template_folder="templates",
+    static_folder="static"
 )
 
-app = Flask(__name__)
+    
+
 app.secret_key = "dev-secret-change-me"
 
 
@@ -218,4 +224,4 @@ def edit_expense(expense_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
